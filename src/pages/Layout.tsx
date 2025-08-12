@@ -1,18 +1,18 @@
 import Navbar from "../components/Navbar.tsx";
 import { useState } from "react";
 
-export type CartItem = {
+export type CartItemType = {
   id: number;
   name: string;
   price: number;
 };
 
 export type LayoutProps = {
-  children: (props: {cartItems: CartItem[]; setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>}) => React.ReactNode;
+  children: (props: {cartItems: CartItemType[]; setCartItems: React.Dispatch<React.SetStateAction<CartItemType[]>>}) => React.ReactNode;
 };
 
 function Layout({ children }: LayoutProps) {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useState<CartItemType[]>([]);
 
   return (
     <div className="flex flex-col min-h-screen">

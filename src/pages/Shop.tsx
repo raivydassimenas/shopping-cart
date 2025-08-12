@@ -1,7 +1,7 @@
 import Layout from "./Layout.tsx";
 import CartItemList from "../components/CartItemList.tsx";
 import type { LayoutProps } from "./Layout.tsx";
-import type { CartItem } from "./Layout.tsx";
+import type { CartItemType } from "./Layout.tsx";
 
 function Shop() {
   return (
