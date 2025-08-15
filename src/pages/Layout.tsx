@@ -5,10 +5,14 @@ export type CartItemType = {
   id: number;
   name: string;
   price: number;
+  quantity: number;
 };
 
 export type LayoutProps = {
-  children: (props: {cartItems: CartItemType[]; setCartItems: React.Dispatch<React.SetStateAction<CartItemType[]>>}) => React.ReactNode;
+  children: ((props: {
+    cartItems: CartItemType[];
+    setCartItems: React.Dispatch<React.SetStateAction<CartItemType[]>>
+  }) => React.ReactNode) | React.ReactNode;
 };
 
 function Layout({ children }: LayoutProps) {
@@ -18,7 +22,9 @@ function Layout({ children }: LayoutProps) {
     <div className="flex flex-col min-h-screen">
       <Navbar cartItems={cartItems} />
       <main className="flex-grow p-4">
-        {children({ cartItems, setCartItems })}
+        {typeof children === "function"
+          ? children({ cartItems, setCartItems })
+          : children}
       </main>
       <footer className="bg-gray-800 text-white p-4 text-center">
         <p>
