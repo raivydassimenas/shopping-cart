@@ -22,18 +22,18 @@ function CartItemList({ cartItems, setCartItems }: {
   }, [setCartItems]);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
-      {cartItems.map((item, index) => (
-        <div key={index} className="cart-item">
-          <CartItem cartItem={item} setCartItems={setCartItems} />
-        </div>
-      ))}
-      {cartItems.length === 0 && (
-        <div className="col-span-full text-center text-gray-500">
-          Your cart is empty. Add some items to your cart!
-        </div>
-      )}
-    </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+        {cartItems.map((item, index) => (
+          <div key={index} className="cart-item">
+            <CartItem cartItem={item} setCartItems={setCartItems} />
+          </div>
+        ))}
+        {cartItems.length === 0 && (
+          <div className="col-span-full text-center text-gray-500">
+            Your cart is empty. Add some items to your cart!
+          </div>
+        )}
+      </div>
   );
 }
 
