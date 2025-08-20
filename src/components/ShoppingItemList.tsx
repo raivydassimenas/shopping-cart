@@ -42,7 +42,7 @@ function ShoppingItemList() {
           description={item.description}
           category={item.category}
           image={item.image}
-          setQuantity={handleSetQuantity(item.id)}
+          setQuantity={item.setQuantity}
         />
       ))}
     </div>
