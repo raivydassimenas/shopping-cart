@@ -16,17 +16,18 @@ function ShoppingItemList() {
   };
 
   useEffect(() => {
-    const initialItems: ShoppingItemType[] = [
-      { id: "1", name: "Apple", quantity: 1, price: 0.5, setQuantity: () => {} },
-      { id: "2", name: "Banana", quantity: 1, price: 0.3, setQuantity: () => {} },
-      { id: "3", name: "Orange", quantity: 1, price: 0.4, setQuantity: () => {} },
-      { id: "4", name: "Grapes", quantity: 1, price: 2.0, setQuantity: () => {} }
-    ];
+    async function fetchShoppingItems() {
+      const shoppingItemsData = await fetch("https://fakestoreapi.com/products");
+      const shoppingItems = await shoppingItemsData.json();
 
-    setShoppingItems(initialItems.map(item => ({
-      ...item,
-      setQuantity: handleSetQuantity(item.id)
-    })));
+      setShoppingItems(
+        shoppingItems.map((item: any) => ({
+          ...item,
+          setQuantity: handleSetQuantity(item.id),
+        }))
+      );
+    }
+    fetchShoppingItems();
   }, []);
 
   return (
@@ -35,9 +36,12 @@ function ShoppingItemList() {
         <ShoppingItem
           key={item.id}
           id={item.id}
-          name={item.name}
+          title={item.title}
           quantity={item.quantity}
           price={item.price}
+          description={item.description}
+          category={item.category}
+          image={item.image}
           setQuantity={handleSetQuantity(item.id)}
         />
       ))}

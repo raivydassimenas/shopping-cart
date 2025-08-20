@@ -1,12 +1,15 @@
 export type ShoppingItemType = {
   id: string;
-  name: string;
+  title: string;
   quantity: number;
   price: number;
+  description: string;
+  category: string;
+  image: string;
   setQuantity: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function ShoppingItem({ id, name, quantity, price, setQuantity }: ShoppingItemType) {
+function ShoppingItem({ id, title, quantity, price, description, category, image, setQuantity }: ShoppingItemType) {
   const handleDecrement = () => {
     setQuantity((q) => Math.max(1, q - 1));
   };
@@ -20,10 +23,13 @@ function ShoppingItem({ id, name, quantity, price, setQuantity }: ShoppingItemTy
     setQuantity(value);
   };
   return (
-    <div className="shopping-item">
-      <h3>{name}</h3>
+    <div className="border-2 p-1 rounded-md shadow-md bg-white max-w-sm">
+      <h3>{title}</h3>
       <p>Quantity: {quantity}</p>
       <p>Price: ${price.toFixed(2)}</p>
+      <p>Description: {description}</p>
+      <p>Category: {category}</p>
+      <img src={image} alt={title} className="w-32 h-32 object-cover mb-2" />
       <form className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700"
@@ -35,7 +41,7 @@ function ShoppingItem({ id, name, quantity, price, setQuantity }: ShoppingItemTy
             <input
               type="number"
               id={id}
-              name={name}
+              name={title}
               min="1"
               value={quantity}
               onChange={handleChange}

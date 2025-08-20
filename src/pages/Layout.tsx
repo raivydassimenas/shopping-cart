@@ -2,11 +2,14 @@ import Navbar from "../components/Navbar.tsx";
 import { useState } from "react";
 
 export type CartItemType = {
-  id: number;
-  name: string;
-  price: number;
+  id: string;
+  title: string;
   quantity: number;
-};
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+}
 
 export type LayoutProps = {
   children: ((props: {
