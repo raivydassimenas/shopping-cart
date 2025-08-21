@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ShoppingItem from "./ShoppingItem.tsx";
 import type { ShoppingItemType } from "./ShoppingItem.tsx";
 
-function ShoppingItemList() {
+function ShoppingItemList({ addToCart }:{}) { {
   const [shoppingItems, setShoppingItems] = useState<ShoppingItemType[]>([]);
 
   const handleSetQuantity = (id: string) => (value: number | ((q: number) => number)) => {
@@ -24,9 +24,11 @@ function ShoppingItemList() {
         shoppingItems.map((item: any) => ({
           ...item,
           setQuantity: handleSetQuantity(item.id),
+          addToCart: (itemData: any) => addToCart(itemData),
         }))
       );
     }
+
     fetchShoppingItems();
   }, []);
 
@@ -43,6 +45,7 @@ function ShoppingItemList() {
           category={item.category}
           image={item.image}
           setQuantity={item.setQuantity}
+          addToCart={item.addToCart}
         />
       ))}
     </div>

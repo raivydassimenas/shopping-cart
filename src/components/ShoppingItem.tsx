@@ -7,9 +7,10 @@ export type ShoppingItemType = {
   category: string;
   image: string;
   setQuantity: React.Dispatch<React.SetStateAction<number>>;
+  addToCart: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function ShoppingItem({ id, title, quantity, price, description, category, image, setQuantity }: ShoppingItemType) {
+function ShoppingItem({ id, title, quantity, price, description, category, image, setQuantity, addToCart }: ShoppingItemType) {
   const handleDecrement = () => {
     setQuantity((q) => Math.max(1, q - 1));
   };
@@ -21,6 +22,13 @@ function ShoppingItem({ id, title, quantity, price, description, category, image
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = Math.max(1, Number(e.target.value));
     setQuantity(value);
+  };
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    addToCart({ id, title, quantity, price, description, category, image });
+    setQuantity(1); // Reset quantity after adding to cart
+    alert(`${title} has been added to your cart!`);
   };
   return (
     <div className="border-2 p-1 rounded-md shadow-md bg-white max-w-sm">
@@ -55,6 +63,7 @@ function ShoppingItem({ id, title, quantity, price, description, category, image
         <button
           type="submit"
           className="w-full py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none"
+          onClick={handleClick}
         >
           Add to Cart
         </button>
