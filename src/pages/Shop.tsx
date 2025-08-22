@@ -4,7 +4,10 @@ import ShoppingItemList from "../components/ShoppingItemList.tsx";
 function Shop() {
   return (
     <Layout>
-      <ShoppingItemList />
+      {({ addToCart }) => (
+        <ShoppingItemList addToCart={addToCart}
+        />
+      )}
     </Layout>
   );
 }

@@ -12,7 +12,12 @@ function CartItem({ cartItem, setCartItems }: {
   return (
     <div className="border-2 p-1 rounded-md shadow-md bg-white max-w-sm">
       <div className={"flex items-center justify-between mb-2"}>
-        <h3>{cartItem.name}</h3>
+        <h3>{cartItem.title}</h3>
+        <p>Quantity: {cartItem.quantity}</p>
+        <p>Price: ${cartItem.price.toFixed(2)}</p>
+        <p>Description: {cartItem.description}</p>
+        <p>Category: {cartItem.category}</p>
+        <img src={cartItem.image} alt={cartItem.title} className="w-32 h-32 object-cover mb-2" />
         <button
           onClick={handleRemove}
           className="text-red-500 hover:text-red-700 mb-2 "
@@ -21,8 +26,6 @@ function CartItem({ cartItem, setCartItems }: {
           <FaTrash className="text-red-500" />
         </button>
       </div>
-      <p>Price: ${cartItem.price.toFixed(2)}</p>
-      <p>Quantity: {cartItem.quantity}</p>
     </div>
   );
 }

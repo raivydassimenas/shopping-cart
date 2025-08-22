@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
 import ShoppingItem from "./ShoppingItem.tsx";
 import type { ShoppingItemType } from "./ShoppingItem.tsx";
+import type { CartItemType } from "../pages/Layout.tsx";
 
-function ShoppingItemList({ addToCart }:{}) { {
+type ShoppingItemListProps = {
+  addToCart: (item: Omit<CartItemType, "setQuantity" | "addToCart">) => void;
+};
+
+function ShoppingItemList({ addToCart }: ShoppingItemListProps) {
   const [shoppingItems, setShoppingItems] = useState<ShoppingItemType[]>([]);
 
   const handleSetQuantity = (id: string) => (value: number | ((q: number) => number)) => {
@@ -23,6 +28,7 @@ function ShoppingItemList({ addToCart }:{}) { {
       setShoppingItems(
         shoppingItems.map((item: any) => ({
           ...item,
+          quantity: 1,
           setQuantity: handleSetQuantity(item.id),
           addToCart: (itemData: any) => addToCart(itemData),
         }))
