@@ -9,8 +9,8 @@ function CartItemList({ cartItems, setCartItems }: {
 
   return (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
-        {cartItems.map((item, index) => (
-          <div key={index} className="cart-item">
+        {cartItems.map((item) => (
+          <div key={item.id} className="cart-item">
             <CartItem cartItem={item} setCartItems={setCartItems} />
           </div>
         ))}
