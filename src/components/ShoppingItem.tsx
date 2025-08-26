@@ -1,3 +1,5 @@
+import type { CartItemType } from '../pages/Layout.tsx';
+
 export type ShoppingItemType = {
   id: string;
   title: string;
@@ -7,7 +9,7 @@ export type ShoppingItemType = {
   category: string;
   image: string;
   setQuantity: React.Dispatch<React.SetStateAction<number>>;
-  addToCart: React.Dispatch<React.SetStateAction<boolean>>;
+  addToCart: (item: CartItemType) => void;
 }
 
 function ShoppingItem({ id, title, quantity, price, description, category, image, setQuantity, addToCart }: ShoppingItemType) {

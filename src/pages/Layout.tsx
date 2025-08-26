@@ -15,7 +15,7 @@ export type LayoutProps = {
     children: ((props: {
         cartItems: CartItemType[];
         setCartItems: React.Dispatch<React.SetStateAction<CartItemType[]>>;
-        addToCart: (item: Omit<CartItemType, "setQuantity" | "addToCart">) => void;
+        addToCart: (item: CartItemType) => void;
     }) => React.ReactNode) | React.ReactNode;
 
 };

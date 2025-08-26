@@ -1,10 +1,10 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useCallback} from "react";
 import ShoppingItem from "./ShoppingItem.tsx";
 import type {ShoppingItemType} from "./ShoppingItem.tsx";
 import type {CartItemType} from "../pages/Layout.tsx";
 
 type ShoppingItemListProps = {
-    addToCart: (item: Omit<CartItemType, "setQuantity" | "addToCart">) => void;
+    addToCart: (item: CartItemType) => void;
 };
 
 type ApiItem = {
@@ -19,7 +19,7 @@ type ApiItem = {
 function ShoppingItemList({addToCart}: ShoppingItemListProps) {
     const [shoppingItems, setShoppingItems] = useState<ShoppingItemType[]>([]);
 
-    const handleSetQuantity = (id: string) => (value: number | ((q: number) => number)) => {
+    const handleSetQuantity = useCallback((id: string) => (value: number | ((q: number) => number)) => {
         setShoppingItems(items =>
             items.map(item =>
                 item.id === id
@@ -27,7 +27,7 @@ function ShoppingItemList({addToCart}: ShoppingItemListProps) {
                     : item
             )
         );
-    };
+    }, []);
 
     useEffect(() => {
         async function fetchShoppingItems() {
@@ -39,14 +39,14 @@ function ShoppingItemList({addToCart}: ShoppingItemListProps) {
                     ...item,
                     id: String(item.id),
                     quantity: 1,
-                    setQuantity: handleSetQuantity(item.id),
-                    addToCart: (itemData: CartItemType) => addToCart(itemData),
+                    setQuantity: handleSetQuantity(String(item.id)),
+                    addToCart: addToCart,
                 }))
             );
         }
 
         fetchShoppingItems();
-    }, []);
+    }, [addToCart, handleSetQuantity]);
 
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
