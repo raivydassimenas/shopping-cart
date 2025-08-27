@@ -1,48 +1,18 @@
 import Navbar from "../components/Navbar.tsx";
-import {useState} from "react";
+import type {CartItemType} from "../App.tsx";
 
-export type CartItemType = {
-    id: string;
-    title: string;
-    quantity: number;
-    price: number;
-    description: string;
-    category: string;
-    image: string;
-}
 
 export type LayoutProps = {
-    children: ((props: {
-        cartItems: CartItemType[];
-        setCartItems: React.Dispatch<React.SetStateAction<CartItemType[]>>;
-        addToCart: (item: CartItemType) => void;
-    }) => React.ReactNode) | React.ReactNode;
-
+    cartItems: CartItemType[];
+    children: React.ReactNode;
 };
 
-function Layout({children}: LayoutProps) {
-    const [cartItems, setCartItems] = useState<CartItemType[]>([]);
-
-    // Add or update item in cart
-    const addToCart = (item: CartItemType) => {
-        setCartItems(prev => {
-            const existing = prev.find(ci => ci.id === item.id);
-            if (existing) {
-                return prev.map(ci =>
-                    ci.id === item.id ? {...ci, quantity: ci.quantity + item.quantity} : ci
-                );
-            }
-            return [...prev, {...item}];
-        });
-    };
-
+function Layout({cartItems, children}: LayoutProps) {
     return (
         <div className="flex flex-col min-h-screen">
             <Navbar cartItems={cartItems}/>
             <main className="flex-grow p-4">
-                {typeof children === "function"
-                    ? children({cartItems, setCartItems, addToCart})
-                    : children}
+                {children}
             </main>
             <footer className="bg-gray-800 text-white p-4 text-center">
                 <p>

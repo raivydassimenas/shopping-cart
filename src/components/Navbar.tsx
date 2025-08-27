@@ -6,13 +6,15 @@ function Navbar({ cartItems }: { cartItems: CartItemType[] }) {
   const location = useLocation();
   const isShopPage = location.pathname === "/shop";
 
+  const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+
   return (
     <nav className="bg-gray-800 text-white p-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-lg font-bold">Shopping Cart</div>
         {isShopPage && (
           <>
-            <p>Items in your cart: {cartItems.length}</p>
+            <p>Items in your cart: {cartItemCount}</p>
             <Link to="/cart" className="hover:bg-blue-600 hover:text-white px-4 py-2 rounded"><FaShoppingCart /></Link>
           </>
         )}

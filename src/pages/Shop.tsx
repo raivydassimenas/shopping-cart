@@ -1,14 +1,10 @@
 import Layout from "./Layout.tsx";
 import ShoppingItemList from "../components/ShoppingItemList.tsx";
+import type {CartItemType} from "../App.tsx";
 
-function Shop() {
+function Shop({cartItems, addToCart}: {cartItems: CartItemType[], addToCart: (item: CartItemType[]) => void}) {
   return (
-    <Layout>
-      {({ addToCart }) => (
-        <ShoppingItemList addToCart={addToCart}
-        />
-      )}
-    </Layout>
+        <ShoppingItemList addToCart={addToCart} />
   );
 }
 

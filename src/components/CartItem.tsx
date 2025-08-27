@@ -10,8 +10,7 @@ function CartItem({ cartItem, setCartItems }: {
   };
 
   return (
-    <div className="border-2 p-1 rounded-md shadow-md bg-white max-w-sm">
-      <div className={"flex items-center justify-between mb-2"}>
+      <div className="border-2 p-1 rounded-md shadow-md bg-white max-w-sm">
         <h3>{cartItem.title}</h3>
         <p>Quantity: {cartItem.quantity}</p>
         <p>Price: ${cartItem.price.toFixed(2)}</p>
@@ -26,7 +25,6 @@ function CartItem({ cartItem, setCartItems }: {
           <FaTrash className="text-red-500" />
         </button>
       </div>
-    </div>
   );
 }
 
