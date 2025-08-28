@@ -23,6 +23,7 @@ function Layout({cartItems, children}: LayoutProps) {
                     Malet-Bates</a> on <a
                     href="https://unsplash.com/photos/stack-of-books-on-white-table-uRLECci4Hl4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
                 </p>
+                <a href="https://www.flaticon.com/free-icons/bookstore" title="bookstore icons">Bookstore icons created by surang - Flaticon</a>
             </footer>
         </div>
     );
