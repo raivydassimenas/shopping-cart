@@ -1,5 +1,5 @@
 import CartItem from "./CartItem.tsx";
-import type { CartItemType } from "../pages/Layout";
+import type { CartItemType } from "../App";
 
 
 function CartItemList({ cartItems, setCartItems }: {

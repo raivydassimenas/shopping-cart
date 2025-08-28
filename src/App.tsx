@@ -34,8 +34,8 @@ function App() {
         <Router>
             <Layout cartItems={cartItems}>
                 <Routes>
-                    <Route path="/" element={<Home cartItems={cartItems}/>}/>
-                    <Route path="/shop" element={<Shop addToCart={addToCart} cartItems={cartItems}/>}/>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/shop" element={<Shop addToCart={addToCart}/>}/>
                     <Route path="/cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems}/>}/>
                 </Routes>
             </Layout>

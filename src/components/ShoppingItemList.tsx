@@ -1,7 +1,7 @@
 import {useState, useEffect, useCallback} from "react";
 import ShoppingItem from "./ShoppingItem.tsx";
 import type {ShoppingItemType} from "./ShoppingItem.tsx";
-import type {CartItemType} from "../pages/Layout.tsx";
+import type {CartItemType} from "../App";
 
 type ShoppingItemListProps = {
     addToCart: (item: CartItemType) => void;

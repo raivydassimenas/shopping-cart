@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import type { CartItemType } from "../pages/Layout.tsx";
+import type { CartItemType } from "../App";
 import { FaShoppingCart } from "react-icons/fa";
 
 function Navbar({ cartItems }: { cartItems: CartItemType[] }) {

@@ -1,4 +1,3 @@
-import Layout from "./Layout.tsx";
 import CartItemList from "../components/CartItemList.tsx";
 import type {CartItemType} from "../App.tsx";
 

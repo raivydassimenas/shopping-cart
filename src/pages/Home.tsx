@@ -1,7 +1,4 @@
-import Layout from "./Layout.tsx";
-import type { CartItemType } from "../App.tsx";
-
-function Home({ cartItems }: { cartItems: CartItemType[] }) {
+function Home() {
   return (
         <div className="container mx-auto">
           <h1 className="text-4xl font-bold mb-4 text-center">My Bookstore</h1>

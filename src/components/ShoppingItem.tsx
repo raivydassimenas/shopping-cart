@@ -1,4 +1,4 @@
-import type { CartItemType } from '../pages/Layout.tsx';
+import type { CartItemType } from '../App';
 
 export type ShoppingItemType = {
   id: string;
